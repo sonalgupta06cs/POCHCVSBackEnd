@@ -132,13 +132,25 @@ public class HCVSController {
 		 
 		File file = new File(UPLOADED_FOLDER + name);
 	    return ResponseEntity.ok().contentType(MediaType.valueOf(FileTypeMap.getDefaultFileTypeMap().getContentType(file))).body(Files.readAllBytes(file.toPath()));
-		/*
-		 * byte[] bFile = new byte[(int) file.length()]; System.out.println(bFile);
-		 * 
-		 * return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bFile);
-		 */
-        
-        //return new ResponseEntity<byte[]>(bFile, headers, HttpStatus.OK);
+	}
+	
+	@GetMapping("/customers/search/{searchBy}/{searchText}")
+	public List<CustomerEntity> getCustomersBySearch(@PathVariable("searchBy") String searchBy, 
+			                                         @PathVariable("searchText") String searchText) {
+
+		System.out.println("getCustomersBySearch..."+searchBy +" "+searchText);
+		
+		 List<CustomerEntity> customersList = null;
+
+		if(searchBy.equals("customerName")) {
+			customersList = hcvsService.findByCustomerNameLike(searchText);
+		} else if(searchBy.equals("tier1Name")) {
+			customersList = hcvsService.findByTier1Like(searchText);
+		} else if(searchBy.equals("tier2Name")) {
+			customersList = hcvsService.findByTier2Like(searchText);
+		}
+
+		return customersList;
 	}
 
 }

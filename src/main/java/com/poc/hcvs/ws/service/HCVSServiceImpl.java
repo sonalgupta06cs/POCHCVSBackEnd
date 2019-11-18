@@ -89,4 +89,25 @@ public class HCVSServiceImpl implements HCVSService {
 	    }
 	}
 
+	@Override
+	public List<CustomerEntity> findByCustomerNameLike(String searchText) {
+		
+		List<CustomerEntity> foundustomers = customerRepository.findBycustomerNameIgnoreCaseContaining(searchText);
+		return foundustomers;
+	}
+
+	@Override
+	public List<CustomerEntity> findByTier1Like(String searchText) {
+		
+		List<CustomerEntity> foundustomers = customerRepository.findBytier1NameIgnoreCaseContaining(searchText);
+		return foundustomers;
+	}
+
+	@Override
+	public List<CustomerEntity> findByTier2Like(String searchText) {
+		
+		List<CustomerEntity> foundustomers = customerRepository.findBytier2NameIgnoreCaseContaining(searchText);
+		return foundustomers;
+	}
+
 }
