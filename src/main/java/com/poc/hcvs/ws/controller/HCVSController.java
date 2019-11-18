@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.activation.FileTypeMap;
@@ -84,12 +85,16 @@ public class HCVSController {
     }
 
 	@DeleteMapping("/customers/{id}")
-	public CustomerDto deleteCustomer(@PathVariable("id") long id) {
+	public CustomerResponse deleteCustomer(@PathVariable("id") long id) {
 		System.out.println("Delete Customer with ID = " + id + "...");
 
 		CustomerDto customerDto = hcvsService.deleteById(id);
+		
+		CustomerResponse custResponse = new CustomerResponse();
+		ModelMapper modelMapper = new ModelMapper();
+		custResponse = modelMapper.map(customerDto, CustomerResponse.class);
 
-		return customerDto;
+		return custResponse;
 	}
 
 	@GetMapping("/customers/all")
@@ -98,6 +103,10 @@ public class HCVSController {
 		System.out.println("Get all Customers...");
 
 		List<CustomerEntity> customers = hcvsService.findAll();
+		
+		List<CustomerResponse> custResponse = new ArrayList<>();
+		//ModelMapper modelMapper = new ModelMapper();
+		//custResponse = modelMapper.map(customersEntityFromDB, custResponse);
 
 		return customers;
 	}

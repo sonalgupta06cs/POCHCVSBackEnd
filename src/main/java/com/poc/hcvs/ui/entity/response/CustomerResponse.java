@@ -11,6 +11,7 @@ public class CustomerResponse {
 	private String tier4Name;
 	private String tier5Name;
 	private String tier6Name;
+	private String logo;
 
 
 	public long getId() {
@@ -61,4 +62,11 @@ public class CustomerResponse {
 	public void setTier6Name(String tier6Name) {
 		this.tier6Name = tier6Name;
 	}
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+	
 }
