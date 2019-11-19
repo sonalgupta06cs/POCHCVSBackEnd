@@ -18,4 +18,10 @@ public interface HCVSService {
 
 	CustomerDto updateCustomer(CustomerDto customer);
 
+	List<CustomerEntity> findByCustomerNameLike(String searchText);
+
+	List<CustomerEntity> findByTier1Like(String searchText);
+
+	List<CustomerEntity> findByTier2Like(String searchText);
+
 }
