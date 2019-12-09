@@ -1,4 +1,4 @@
-package com.poc.hcvs.ui.entity.response;
+package com.poc.hcvs.ui.model.response;
 
 
 public class CustomerResponse {
@@ -12,6 +12,11 @@ public class CustomerResponse {
 	private String tier5Name;
 	private String tier6Name;
 	private String logo;
+	private String postalCode;
+	private boolean active;
+	private int userId;
+	
+	// private UserResponse userResponse;
 
 
 	public long getId() {
@@ -68,5 +73,28 @@ public class CustomerResponse {
 	public void setLogo(String logo) {
 		this.logo = logo;
 	}
-	
+	public String getPostalCode() {
+		return postalCode;
+	}
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}	
+	/* public UserResponse getUserResponse() {
+		return userResponse;
+	}
+	public void setUserResponse(UserResponse userResponse) {
+		this.userResponse = userResponse;
+	}	 */
 }

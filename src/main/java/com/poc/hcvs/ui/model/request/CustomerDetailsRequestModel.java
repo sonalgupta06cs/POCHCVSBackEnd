@@ -1,9 +1,6 @@
-package com.poc.hcvs.ui.entity.request;
-
-import org.springframework.web.multipart.MultipartFile;
+package com.poc.hcvs.ui.model.request;
 
 /**
- * @author SonaSach
  * 
  *  This class should have the matching fields coming from HTTP request
  *  json payload.
@@ -19,7 +16,11 @@ public class CustomerDetailsRequestModel {
 	private String tier4Name;
 	private String tier5Name;
 	private String tier6Name;
-	private MultipartFile logo;
+	private String postalCode;
+	
+	private int userId;
+	
+	private UserDetailsRequestModel userDetailsRequestModel;
 	
 	public int getId() {
 		return id;
@@ -69,11 +70,24 @@ public class CustomerDetailsRequestModel {
 	public void setTier6Name(String tier6Name) {
 		this.tier6Name = tier6Name;
 	}
-	public MultipartFile getLogo() {
-		return logo;
+	public String getPostalCode() {
+		return postalCode;
 	}
-	public void setLogo(MultipartFile logo) {
-		this.logo = logo;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+	public UserDetailsRequestModel getUserDetailsRequestModel() {
+		return userDetailsRequestModel;
+	}
+	public void setUserDetailsRequestModel(UserDetailsRequestModel userDetailsRequestModel) {
+		this.userDetailsRequestModel = userDetailsRequestModel;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
     
+	    
 }

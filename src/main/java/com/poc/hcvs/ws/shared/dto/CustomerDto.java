@@ -15,6 +15,12 @@ public class CustomerDto {
 	private String tier5Name;
 	private String tier6Name;
 	private String logo;
+	private String postalCode;
+	private boolean isActive;
+	
+	private int userId;
+	
+	//private UserDto userDto;
 	
 	public long getId() {
 		return id;
@@ -70,5 +76,30 @@ public class CustomerDto {
 	public void setLogo(String logo) {
 		this.logo = logo;
 	}
-    
+	public String getPostalCode() {
+		return postalCode;
+	}
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+	public boolean isActive() {
+		return isActive;
+	}
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	/*
+	 * public UserDto getUserDto() { return userDto; } public void
+	 * setUserDto(UserDto userDto) { this.userDto = userDto; }
+	 */
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
+	
+	
 }

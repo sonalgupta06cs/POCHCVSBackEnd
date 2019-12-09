@@ -10,13 +10,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
 
 /**
  * @author 143703
  *
  */
 @Entity(name="Customers")
-public class CustomerEntity implements Serializable {
+public class CustomerEntity extends AuditModel implements Serializable  {
 	
 
 	private static final long serialVersionUID = 1L;
@@ -48,6 +52,22 @@ public class CustomerEntity implements Serializable {
 	
 	@Column(length = 50)
 	private String logo;
+	
+	@Transient
+	private String postalCode;
+	
+	@Column(nullable = false)
+	private boolean active;
+	
+	@ManyToOne
+    @JoinColumn(name="user_id")
+	private UserEntity userDetails;
+	
+	@Column(name = "updatedNoOfTimes")
+	private int updateNoFlag = 0;
+	
+	@Column(length = 50)
+	private String lastUpdatedBy;
 
 	public long getId() {
 		return id;
@@ -121,6 +141,44 @@ public class CustomerEntity implements Serializable {
 		this.logo = logo;
 	}
 
-    
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public UserEntity getUserDetails() {
+		return userDetails;
+	}
+
+	public void setUserDetails(UserEntity userDetails) {
+		this.userDetails = userDetails;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public int getUpdateNoFlag() {
+		return updateNoFlag;
+	}
+
+	public void setUpdateNoFlag(int updateNoFlag) {
+		this.updateNoFlag = updateNoFlag;
+	}
+
+	public String getLastUpdatedBy() {
+		return lastUpdatedBy;
+	}
+
+	public void setLastUpdatedBy(String lastUpdatedBy) {
+		this.lastUpdatedBy = lastUpdatedBy;
+	}		
 	
 }

@@ -1,18 +1,15 @@
 package com.poc.hcvs.ws.service;
 
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.http.ResponseEntity;
 
 import com.poc.hcvs.ws.model.CustomerEntity;
 import com.poc.hcvs.ws.shared.dto.CustomerDto;
 
-public interface HCVSService {
+public interface HCVSCustomerService {
 	
 	CustomerDto createCustomer(CustomerDto userDto);
 
-	CustomerDto deleteById(long id);
+	int deleteById(long[] id);
 
 	List<CustomerEntity> findAll();
 
@@ -23,5 +20,11 @@ public interface HCVSService {
 	List<CustomerEntity> findByTier1Like(String searchText);
 
 	List<CustomerEntity> findByTier2Like(String searchText);
+
+	List<CustomerDto> getAllCustomersName(String keyword);
+	
+	CustomerDto findById(Long id);
+	
+	/* List<CustomerDto> softDeleteByIds(Long[] ids); */
 
 }
